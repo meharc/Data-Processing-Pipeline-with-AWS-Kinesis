@@ -1,0 +1,19 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "dynamodb:PutItem",
+                "dynamodb:UpdateItem",
+                "dynamodb:UpdateTable",
+                "dynamodb:DescribeTable",
+                "dynamodb:BatchWriteItem"
+            ],
+            "Resource": [
+                "arn:aws:dynamodb:us-east-1:354077325797:table/Precipitation",
+                "arn:aws:dynamodb:us-east-1:354077325797:table/Temperature"
+            ],
+            "Effect": "Allow"
+        }
+    ]
+}
