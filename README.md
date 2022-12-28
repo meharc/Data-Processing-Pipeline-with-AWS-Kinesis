@@ -4,4 +4,4 @@ The project aims to build a pipeline that acquires weather data, processes it in
 
 The project workflow broadly involves acquiring data from National Oceanic and Atmospheric Administration’s (NOAA’s) REST API, inserting data into the AWS Kinesis data stream in real-time, extracting data from the stream, and importing it into DynamoDB tables. The project will be tested based on performing queries on the imported data, contained in the DynamoDB tables.
 
-[embed]https://github.com/meharc/Data-Processing-Pipeline-with-AWS-Kinesis/blob/main/README.pdf[/embed]
+[embed]README.pdf[/embed]
