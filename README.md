@@ -9,7 +9,7 @@ The project workflow broadly involves acquiring data from National Oceanic and A
 
 ## PROCEDURE
 Following the guideline presented above, the section describes the procedure in 7 steps. The figure below presents a comprehensive work flow for the project.
-
+[!alt text](https://github.com/meharc/Data-Processing-Pipeline-with-AWS-Kinesis/blob/main/workflow.png)
 
 ### Step 1: Extract data using NOAA’s REST API
 (Refer *getData.py*)
