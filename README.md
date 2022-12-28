@@ -8,7 +8,7 @@ The project workflow broadly involves acquiring data from National Oceanic and A
 
 
 ## PROCEDURE
-Following the guideline presented in Figure 3, the section describes the procedure in 7 steps.
+Following the guideline presented above, the section describes the procedure in 7 steps.
 
 ### Step 1: Extract data using NOAA’s REST API
 
@@ -29,20 +29,14 @@ In this step, we will create an Identity and Access Management (IAM) role for th
 
 - Provide read access from the Kinesis data stream and write to CloudWatch logs.
 - Provide edit, read and write access for the DynamoDB tables.
-- 
+
 For this purpose, we associate 1 customer managed IAM policy— *LambdaFunctionPolicy.json* and 1 AWS managed IAM policies to the role. 
 
 ### Step 7: Create Consumer
-In this step, we use the AWS Lambda service to create a consumer called KinesisLambdaConsumer that gets triggered when there is data on the input-stream. For this purpose, we click on the ’Create function’ tab provided under the AWS Lambda service with the following modifications (refer Figure 11):
-• Python 3.9 is chosen as the programming language to write the lambda function.
-• KinesisLambdaConsumerRole is associated with the function.
-• All other parameters remain unchanged.
+In this step, we use the AWS Lambda service to create a consumer called KinesisLambdaConsumer that gets triggered when there is data on the input-stream. For this purpose, we click on the ’Create function’ tab provided under the AWS Lambda service with the following modifications :
+
+- Python 3.9 is chosen as the programming language to write the lambda function.
+- KinesisLambdaConsumerRole is associated with the function.
+- All other parameters remain unchanged.
+
 Next, we write a Python script— lambda handler.py with a function called lambda handler to give instructions to the lambda function on how to put data from the stream onto the DynamoDB tables. In the final step, we create a trigger that invokes the lambda handler whenever there is data present in the input-stream. 
-
-## TESTING
-
- The following results test the workflow of the project:
-- As can be seen in Figure 7 and 15, the python3 terminal prints out the total ingested data from the REST API along with an HTTP status code as 200, verifying a successful data extraction from NOAA’s website.
-- Figure 16 illustrates a 100% average success rate of GetRecords operations, that is, getting data records from kinesis data stream’s shard for the input-stream. The CloudWatch metric is available in the AWS kinesis service for a particular data stream.
-- Figure 17 verifies that the lambda function was triggered over a specified amount of time.The CloudWatch metric is available in the AWS Lambda service for the KinesisLambdaConsumer function.
-- The output of the project involves filling up the DynamoDB tables— Precipitation and Temperature and sorting the values using station name and date as the partition and sort key, respectively. To illustrate the successful creation of table items, a query is run to obtain the weather parameters for Beltsville in chronological order, as shown in Figure 18 and Figure 19. The query is case-sensitive, hence, it is important to provide all locations in capitals.
