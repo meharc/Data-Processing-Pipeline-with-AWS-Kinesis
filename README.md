@@ -8,15 +8,17 @@ The project workflow broadly involves acquiring data from National Oceanic and A
 
 
 ## PROCEDURE
-Following the guideline presented above, the section describes the procedure in 7 steps.
+Following the guideline presented above, the section describes the procedure in 7 steps. The figure below presents a comprehensive work flow for the project.
+
 
 ### Step 1: Extract data using NOAA’s REST API
+(Refer *getData.py*)
 
 ### Step 2: Create Kinesis data stream
 In this step, we will create a data stream by using the AWS Kinesis service. Simply go to Kinesis service on AWS and click on ’Create data stream’. The stream is named as input-stream and on-demand capacity mode is used. 
 
 ### Step 3: Create Producer
-Now that we have our data and data stream ready, it’s time to put the data into the stream. For this purpose, we will use AWS SDK for Python— Boto3. The SDK acts as a producer that creates a low-level service to connect to AWS Kinesis and put data onto it. For the range of dates between October 1, 2021, and October 31, 2021, we extract data, serialize each Python object in streamData variable, and put it on the stream using SDK. The code is available under the script name putDataInStream.py.
+Now that we have our data and data stream ready, it’s time to put the data into the stream. For this purpose, we will use AWS SDK for Python— Boto3. The SDK acts as a producer that creates a low-level service to connect to AWS Kinesis and put data onto it. For the range of dates between October 1, 2021, and October 31, 2021, we extract data, serialize each Python object in streamData variable, and put it on the stream using SDK. The code is available under the script name *putDataInStream.py*.
 
 ### Step 4: Ingest data into the stream
 We now create an Integrated Development Environment (IDE) on AWS using Cloud9 service to run scripts and use the SDK producer to put data from the NOAA’s REST API onto the Kinesis data stream called input-stream. For this purpose, we simply go to Cloud9 service on AWS and click on ’Create environment’. The environment is named as project-kinesis with default settings as t2.micros as the EC2 instance and Amazon Linux 2 as the operating system. 
